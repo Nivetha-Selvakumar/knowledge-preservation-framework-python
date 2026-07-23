@@ -1,11 +1,14 @@
 from collectors.github_collector import GithubCollector
 
+
 class GithubAgent:
 
     def __init__(self):
 
         self.collector = GithubCollector()
 
-    def collect(self):
+    def activate(self, request):
 
-        return self.collector.collect()
+        print("GitHub Agent Started")
+
+        return self.collector.collect(request)

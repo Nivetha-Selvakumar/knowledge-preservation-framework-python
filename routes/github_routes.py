@@ -1,15 +1,14 @@
 from fastapi import APIRouter
 
 from agents.central_agent import CentralAgent
+from models.github_request import GithubRequest
 
-router = APIRouter(
-    prefix="/github",
-    tags=["GitHub"]
-)
+router = APIRouter(prefix="/github", tags=["GitHub"])
 
-central_agent = CentralAgent()
 
 @router.post("/sync")
-def sync():
+def sync(request: GithubRequest):
 
-    return central_agent.sync_github()
+    central = CentralAgent()
+
+    return central.activate_github(request)
